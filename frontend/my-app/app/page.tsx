@@ -53,28 +53,28 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
-      <section className="bg-gray-800 py-16 border-b border-gray-700">
+      <section className="py-16 border-b border-border bg-card">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <Shield className="h-8 w-8 text-blue-400" suppressHydrationWarning />
+              <Shield className="h-8 w-8 text-primary" suppressHydrationWarning />
               <h1 className="text-4xl md:text-6xl font-bold">NewsGuard</h1>
             </div>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8">
               Your trusted source for verified, fact-checked journalism
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Badge variant="secondary" className="bg-blue-600 text-white">
+              <Badge variant="secondary" className="bg-primary text-primary-foreground">
                 <Shield className="h-4 w-4 mr-1" suppressHydrationWarning />
                 Fake News Detection
               </Badge>
-              <Badge variant="secondary" className="bg-slate-600 text-white">
+              <Badge variant="secondary" className="bg-accent text-accent-foreground">
                 <Eye className="h-4 w-4 mr-1" suppressHydrationWarning />
                 Fact Verified
               </Badge>
-              <Badge variant="secondary" className="bg-indigo-600 text-white">
+              <Badge variant="secondary" className="bg-muted text-muted-foreground">
                 <TrendingUp className="h-4 w-4 mr-1" suppressHydrationWarning />
                 Real-time Updates
               </Badge>
@@ -94,7 +94,7 @@ export default function HomePage() {
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold">Latest Verified News</h2>
               <Link href="/news">
-                <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 bg-transparent">
+                <Button variant="outline" className="border-border text-foreground hover:bg-accent bg-transparent">
                   View All News
                 </Button>
               </Link>
@@ -104,16 +104,16 @@ export default function HomePage() {
               {loading ? (
                 <div className="space-y-6">
                   {Array.from({ length: 3 }).map((_, i) => (
-                    <div key={i} className="bg-gray-800 border border-gray-700 rounded-lg p-6 animate-pulse">
-                      <div className="h-4 bg-gray-700 rounded w-3/4 mb-2"></div>
-                      <div className="h-3 bg-gray-700 rounded w-1/2"></div>
+                    <div key={i} className="bg-card border border-border rounded-lg p-6 animate-pulse">
+                      <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
+                      <div className="h-3 bg-muted rounded w-1/2"></div>
                     </div>
                   ))}
                 </div>
               ) : featuredNews.length > 0 ? (
                 featuredNews.map((article) => <NewsCard key={article.id} article={article} featured />)
               ) : (
-                <div className="text-center py-8 text-gray-400">
+                <div className="text-center py-8 text-muted-foreground">
                   <p>No articles available for this category.</p>
                 </div>
               )}
@@ -123,9 +123,9 @@ export default function HomePage() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Trending News */}
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="bg-card border-border">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-white">
+                <CardTitle className="flex items-center gap-2 text-card-foreground">
                   <TrendingUp className="h-5 w-5" suppressHydrationWarning />
                   Trending Now
                 </CardTitle>
@@ -133,11 +133,11 @@ export default function HomePage() {
               <CardContent className="space-y-4">
                 {trendingNews.length > 0 ? (
                   trendingNews.map((article) => (
-                    <div key={article.id} className="border-b border-gray-700 pb-3 last:border-b-0">
-                      <Link href={`/news/${article.id}`} className="block hover:text-blue-400 transition-colors">
-                        <h4 className="font-medium text-sm mb-2 text-gray-200">{article.title}</h4>
-                        <div className="flex items-center justify-between text-xs text-gray-400">
-                          <Badge variant="outline" className="border-gray-600 text-gray-300">
+                    <div key={article.id} className="border-b border-border pb-3 last:border-b-0">
+                      <Link href={`/news/${article.id}`} className="block hover:text-primary transition-colors">
+                        <h4 className="font-medium text-sm mb-2 text-card-foreground">{article.title}</h4>
+                        <div className="flex items-center justify-between text-xs text-muted-foreground">
+                          <Badge variant="outline" className="border-border text-muted-foreground">
                             {article.category.name}
                           </Badge>
                           <div className="flex items-center gap-1">
@@ -149,7 +149,7 @@ export default function HomePage() {
                     </div>
                   ))
                 ) : (
-                  <div className="text-center py-4 text-gray-400">
+                  <div className="text-center py-4 text-muted-foreground">
                     <p className="text-sm">No trending articles available.</p>
                   </div>
                 )}
@@ -157,61 +157,61 @@ export default function HomePage() {
             </Card>
 
             {/* Platform Stats */}
-            <Card className="bg-slate-800 border-slate-600">
+            <Card className="bg-card border-border">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-white">
+                <CardTitle className="flex items-center gap-2 text-card-foreground">
                   <Shield className="h-5 w-5" suppressHydrationWarning />
                   Platform Statistics
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Total Articles:</span>
-                  <span className="text-white font-medium">{stats.total_articles.toLocaleString()}</span>
+                  <span className="text-muted-foreground">Total Articles:</span>
+                  <span className="text-card-foreground font-medium">{stats.total_articles.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Total Users:</span>
-                  <span className="text-green-400 font-medium">{stats.total_users.toLocaleString()}</span>
+                  <span className="text-muted-foreground">Total Users:</span>
+                  <span className="text-primary font-medium">{stats.total_users.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Accuracy Rate:</span>
-                  <span className="text-blue-400 font-medium">{stats.accuracy_rate}%</span>
+                  <span className="text-muted-foreground">Accuracy Rate:</span>
+                  <span className="text-primary font-medium">{stats.accuracy_rate}%</span>
                 </div>
               </CardContent>
             </Card>
 
             {/* Anti-Fake News Info */}
-            <Card className="bg-slate-800 border-slate-600">
+            <Card className="bg-card border-border">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-white">
+                <CardTitle className="flex items-center gap-2 text-card-foreground">
                   <Shield className="h-5 w-5" suppressHydrationWarning />
                   Fighting Misinformation
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-gray-200">
+                <CardDescription className="text-muted-foreground">
                   Every article is verified through our AI-powered fact-checking system and reviewed by our editorial
                   team.
                 </CardDescription>
-                <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700">Learn More</Button>
+                <Button className="w-full mt-4 bg-primary hover:bg-primary/90">Learn More</Button>
               </CardContent>
             </Card>
 
             {/* Newsletter Signup - Only show when not authenticated */}
             {!isAuthenticated && (
-              <Card className="bg-gray-800 border-gray-700">
+              <Card className="bg-card border-border">
                 <CardHeader>
-                  <CardTitle className="text-white">Stay Informed</CardTitle>
-                  <CardDescription className="text-gray-400">Get verified news delivered to your inbox</CardDescription>
+                  <CardTitle className="text-card-foreground">Stay Informed</CardTitle>
+                  <CardDescription className="text-muted-foreground">Get verified news delivered to your inbox</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex gap-2">
                     <input
                       type="email"
                       placeholder="Enter your email"
-                      className="flex-1 px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="flex-1 px-3 py-2 bg-input border border-border rounded-md text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                     />
-                    <Button className="bg-blue-600 hover:bg-blue-700">Subscribe</Button>
+                    <Button className="bg-primary hover:bg-primary/90">Subscribe</Button>
                   </div>
                 </CardContent>
               </Card>

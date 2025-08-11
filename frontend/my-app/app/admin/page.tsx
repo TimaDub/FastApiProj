@@ -261,13 +261,13 @@ export default function AdminPage() {
                                 {article.views_count?.toLocaleString()}
                               </div>
                             )}
-                            <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
+                            <Button variant="ghost" size="sm" className="text-gray-400 hover:text-primary">
                               <Edit className="h-4 w-4" suppressHydrationWarning />
                             </Button>
                             <Button 
                               variant="ghost" 
                               size="sm" 
-                              className="text-gray-400 hover:text-red-400"
+                              className="text-gray-400 hover:text-destructive"
                               onClick={() => handleDeleteArticle(article.id, article.title)}
                             >
                               <Trash2 className="h-4 w-4" suppressHydrationWarning />
@@ -467,11 +467,11 @@ export default function AdminPage() {
                       <Button
                         type="button"
                         variant="outline"
-                        className="border-gray-600 text-gray-300 hover:bg-gray-700 bg-transparent"
+                        className="border-gray-600 text-gray-300 hover:bg-accent bg-transparent"
                       >
                         Save Draft
                       </Button>
-                      <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
+                      <Button type="submit" className="bg-blue-600 hover:bg-primary/90">
                         Publish Article
                       </Button>
                     </div>
@@ -519,14 +519,14 @@ export default function AdminPage() {
                         <Badge className="bg-yellow-600">Pending Review</Badge>
                       </div>
                       <div className="flex gap-2">
-                        <Button size="sm" className="bg-green-600 hover:bg-green-700">
+                        <Button size="sm" className="bg-green-600 hover:bg-primary/90">
                           <CheckCircle className="h-4 w-4 mr-1" suppressHydrationWarning />
                           Approve
                         </Button>
                         <Button
                           size="sm"
                           variant="outline"
-                          className="border-red-600 text-red-400 hover:bg-red-600 hover:text-white bg-transparent"
+                          className="border-red-600 text-red-400 hover:bg-destructive hover:text-primary bg-transparent"
                         >
                           <Trash2 className="h-4 w-4 mr-1" suppressHydrationWarning />
                           Remove

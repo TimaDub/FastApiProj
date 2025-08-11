@@ -29,7 +29,7 @@ export function NewsCard({ article, featured = false }: NewsCardProps) {
   const publishedDate = article.published_at ? new Date(article.published_at).toLocaleDateString() : 'Draft'
 
   return (
-    <div className={featured ? "flex h-64 lg:h-80 bg-gray-800 rounded-lg overflow-hidden border border-gray-700 hover:bg-gray-750 transition-colors" : ""}>
+    <div className={featured ? "flex h-64 lg:h-80 bg-card rounded-lg overflow-hidden border border-border hover:bg-card/90 transition-colors" : ""}>
       {featured ? (
         <>
           {/* Image taking up 50% with rounded left corners */}
@@ -43,28 +43,28 @@ export function NewsCard({ article, featured = false }: NewsCardProps) {
               suppressHydrationWarning
             />
             {/* Gradient overlay that fades from transparent to the box color */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent from-0% via-transparent via-70% to-slate-800 to-100% rounded-l-lg"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent from-0% via-transparent via-70% to-[#27293c] to-100% rounded-l-lg"></div>
           </div>
           
           {/* Colored info box taking up 50% */}
-          <div className="w-1/2 bg-slate-800 flex flex-col justify-center p-4 lg:p-6">
+          <div className="w-1/2 bg-card flex flex-col justify-center p-4 lg:p-6">
             <div className="space-y-3 lg:space-y-4">
               <div className="flex items-center justify-between mb-2">
-                <Badge variant="outline" className="border-gray-600 text-gray-300 text-xs">
+                <Badge variant="outline" className="border-border text-muted-foreground text-xs">
                   {article.category.name}
                 </Badge>
                 {article.is_featured && (
-                  <Badge className="bg-green-600 text-white text-xs" suppressHydrationWarning>
+                  <Badge className="bg-primary text-primary-foreground text-xs" suppressHydrationWarning>
                     <Shield className="h-3 w-3 mr-1" suppressHydrationWarning />
                     Featured
                   </Badge>
                 )}
               </div>
-              <h3 className="text-lg lg:text-xl font-bold text-white hover:text-blue-400 transition-colors leading-tight">
+              <h3 className="text-lg lg:text-xl font-bold text-foreground hover:text-primary transition-colors leading-tight">
                 <Link href={`/news/${article.id}`}>{article.title}</Link>
               </h3>
-              <p className="text-gray-300 leading-relaxed text-sm lg:text-base line-clamp-3">{article.summary}</p>
-              <div className="flex flex-col gap-2 text-xs lg:text-sm text-gray-400">
+              <p className="text-muted-foreground leading-relaxed text-sm lg:text-base line-clamp-3">{article.summary}</p>
+              <div className="flex flex-col gap-2 text-xs lg:text-sm text-muted-foreground">
                 <div className="flex items-center gap-3">
                   <div className="flex items-center gap-1">
                     <User className="h-3 w-3 lg:h-4 lg:w-4" suppressHydrationWarning />
@@ -87,26 +87,26 @@ export function NewsCard({ article, featured = false }: NewsCardProps) {
           </div>
         </>
       ) : (
-        <Card className="bg-gray-800 border-gray-700 hover:bg-gray-750 transition-colors">
+        <Card className="bg-card border-border hover:bg-card/90 transition-colors">
           <CardHeader>
             <div className="flex items-center justify-between mb-2">
-              <Badge variant="outline" className="border-gray-600 text-gray-300">
+              <Badge variant="outline" className="border-border text-muted-foreground">
                 {article.category.name}
               </Badge>
               {article.is_featured && (
-                <Badge className="bg-green-600 text-white" suppressHydrationWarning>
+                <Badge className="bg-primary text-primary-foreground" suppressHydrationWarning>
                   <Shield className="h-3 w-3 mr-1" suppressHydrationWarning />
                   Featured
                 </Badge>
               )}
             </div>
-            <CardTitle className="text-white hover:text-blue-400 transition-colors">
+            <CardTitle className="text-card-foreground hover:text-primary transition-colors">
               <Link href={`/news/${article.id}`}>{article.title}</Link>
             </CardTitle>
-            <CardDescription className="text-gray-400">{article.summary}</CardDescription>
+            <CardDescription className="text-muted-foreground">{article.summary}</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="flex items-center justify-between text-sm text-gray-400">
+            <div className="flex items-center justify-between text-sm text-muted-foreground">
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-1">
                   <User className="h-4 w-4" suppressHydrationWarning />

@@ -54,7 +54,7 @@ export function Toast({ message, type = 'success', duration = 3000, onClose, isV
       <span className="text-sm font-medium">{message}</span>
       <button
         onClick={onClose}
-        className="ml-2 text-gray-400 hover:text-white transition-colors"
+        className="ml-2 text-gray-400 hover:text-primary transition-colors"
       >
         <X className="h-4 w-4" />
       </button>

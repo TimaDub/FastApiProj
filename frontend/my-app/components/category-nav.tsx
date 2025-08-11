@@ -50,11 +50,11 @@ export function CategoryNav({ onCategoryChange }: CategoryNavProps) {
 
   if (loading) {
     return (
-      <div className="bg-gray-800 border-b border-gray-700">
+      <div className="bg-card border-b border-border">
         <div className="container mx-auto px-4 py-4">
           <div className="flex gap-2">
             {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="h-10 w-24 bg-gray-700 rounded animate-pulse" />
+              <div key={i} className="h-10 w-24 bg-muted rounded animate-pulse" />
             ))}
           </div>
         </div>
@@ -87,7 +87,7 @@ export function CategoryNav({ onCategoryChange }: CategoryNavProps) {
   ]
 
   return (
-    <div className="bg-gray-800 border-b border-gray-700">
+    <div className="bg-card border-b border-border">
       <div className="container mx-auto px-4 py-4">
         <div className="flex flex-wrap gap-2">
           {allCategories.map((category) => (
@@ -96,13 +96,13 @@ export function CategoryNav({ onCategoryChange }: CategoryNavProps) {
               variant={activeCategory === category.name ? "default" : "ghost"}
               className={`${
                 activeCategory === category.name
-                  ? "bg-blue-600 hover:bg-blue-700 text-white"
-                  : "text-gray-300 hover:text-white hover:bg-gray-700"
+                  ? "bg-primary hover:bg-primary/90 text-primary-foreground"
+                  : "text-muted-foreground hover:text-primary hover:bg-accent"
               }`}
               onClick={() => handleCategoryClick(category.name)}
             >
               {category.name}
-              <Badge variant="secondary" className="ml-2 bg-gray-600 text-gray-200" suppressHydrationWarning>
+              <Badge variant="secondary" className="ml-2 bg-muted text-muted-foreground" suppressHydrationWarning>
                 {category.articleCount}
               </Badge>
             </Button>

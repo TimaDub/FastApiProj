@@ -63,22 +63,22 @@ export default function SignInPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4">
-      <Card className="w-full max-w-md bg-gray-800 border-gray-700">
+    <div className="min-h-screen bg-background flex items-center justify-center px-4">
+      <Card className="w-full max-w-md bg-card border-border">
         <CardHeader className="text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Shield className="h-8 w-8 text-blue-400" />
-            <span className="text-2xl font-bold text-white">NewsGuard</span>
+            <Shield className="h-8 w-8 text-primary" />
+            <span className="text-2xl font-bold text-foreground">NewsGuard</span>
           </div>
-          <CardTitle className="text-white">Welcome Back</CardTitle>
-          <CardDescription className="text-gray-400">
+          <CardTitle className="text-card-foreground">Welcome Back</CardTitle>
+          <CardDescription className="text-muted-foreground">
             Sign in to access verified news and your personalized feed
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-gray-300">
+              <Label htmlFor="email" className="text-card-foreground">
                 Email
               </Label>
               <Input
@@ -87,13 +87,13 @@ export default function SignInPage() {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
+                className="bg-input border-border text-foreground placeholder-muted-foreground focus:border-ring"
                 required
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-gray-300">
+              <Label htmlFor="password" className="text-card-foreground">
                 Password
               </Label>
               <div className="relative">
@@ -103,14 +103,14 @@ export default function SignInPage() {
                   placeholder="Enter your password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500 pr-10"
+                  className="bg-input border-border text-foreground placeholder-muted-foreground focus:border-ring pr-10"
                   required
                 />
                 <Button
                   type="button"
                   variant="ghost"
                   size="sm"
-                  className="absolute right-0 top-0 h-full px-3 text-gray-400 hover:text-white"
+                  className="absolute right-0 top-0 h-full px-3 text-muted-foreground hover:text-foreground"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -123,42 +123,42 @@ export default function SignInPage() {
                 <input
                   id="remember"
                   type="checkbox"
-                  className="rounded border-gray-600 bg-gray-700 text-blue-600 focus:ring-blue-500"
+                  className="rounded border-border bg-input text-primary focus:ring-ring"
                 />
-                <Label htmlFor="remember" className="text-sm text-gray-300">
+                <Label htmlFor="remember" className="text-sm text-card-foreground">
                   Remember me
                 </Label>
               </div>
-              <Link href="/forgot-password" className="text-sm text-blue-400 hover:text-blue-300">
+              <Link href="/forgot-password" className="text-sm text-primary hover:text-primary/90">
                 Forgot password?
               </Link>
             </div>
 
             {error && (
-              <div className="text-red-400 text-sm text-center bg-red-950 border border-red-800 rounded p-2">
+              <div className="text-destructive text-sm text-center bg-destructive/10 border border-destructive rounded p-2">
                 {error}
               </div>
             )}
             
-            <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" disabled={loading}>
+            <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={loading}>
               {loading ? "Signing in..." : "Sign In"}
             </Button>
           </form>
 
-          <Separator className="my-6 bg-gray-600" />
+          <Separator className="my-6 bg-border" />
 
           <div className="space-y-3">
-            <Button variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-gray-700 bg-transparent">
+            <Button variant="outline" className="w-full border-border text-muted-foreground hover:bg-accent bg-transparent">
               Continue with Google
             </Button>
-            <Button variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-gray-700 bg-transparent">
+            <Button variant="outline" className="w-full border-border text-muted-foreground hover:bg-accent bg-transparent">
               Continue with GitHub
             </Button>
           </div>
 
-          <p className="text-center text-sm text-gray-400 mt-6">
+          <p className="text-center text-sm text-muted-foreground mt-6">
             {"Don't have an account? "}
-            <Link href="/signup" className="text-blue-400 hover:text-blue-300">
+            <Link href="/signup" className="text-primary hover:text-primary/90">
               Sign up
             </Link>
           </p>

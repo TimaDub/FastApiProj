@@ -173,7 +173,7 @@ export default function SignUpPage() {
                   type="button"
                   variant="ghost"
                   size="sm"
-                  className="absolute right-0 top-0 h-full px-3 text-gray-400 hover:text-white"
+                  className="absolute right-0 top-0 h-full px-3 text-gray-400 hover:text-primary"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -199,7 +199,7 @@ export default function SignUpPage() {
                   type="button"
                   variant="ghost"
                   size="sm"
-                  className="absolute right-0 top-0 h-full px-3 text-gray-400 hover:text-white"
+                  className="absolute right-0 top-0 h-full px-3 text-gray-400 hover:text-primary"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 >
                   {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -217,11 +217,11 @@ export default function SignUpPage() {
                 />
                 <Label htmlFor="terms" className="text-sm text-gray-300">
                   I agree to the{" "}
-                  <Link href="/terms" className="text-blue-400 hover:text-blue-300">
+                  <Link href="/terms" className="text-blue-400 hover:text-primary/90">
                     Terms of Service
                   </Link>{" "}
                   and{" "}
-                  <Link href="/privacy" className="text-blue-400 hover:text-blue-300">
+                  <Link href="/privacy" className="text-blue-400 hover:text-primary/90">
                     Privacy Policy
                   </Link>
                 </Label>
@@ -246,7 +246,7 @@ export default function SignUpPage() {
               </div>
             )}
             
-            <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" disabled={!formData.agreeToTerms || loading}>
+            <Button type="submit" className="w-full bg-blue-600 hover:bg-primary/90" disabled={!formData.agreeToTerms || loading}>
               {loading ? "Creating Account..." : "Create Account"}
             </Button>
           </form>
@@ -254,17 +254,17 @@ export default function SignUpPage() {
           <Separator className="my-6 bg-gray-600" />
 
           <div className="space-y-3">
-            <Button variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-gray-700 bg-transparent">
+            <Button variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-accent bg-transparent">
               Continue with Google
             </Button>
-            <Button variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-gray-700 bg-transparent">
+            <Button variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-accent bg-transparent">
               Continue with GitHub
             </Button>
           </div>
 
           <p className="text-center text-sm text-gray-400 mt-6">
             Already have an account?{" "}
-            <Link href="/signin" className="text-blue-400 hover:text-blue-300">
+            <Link href="/signin" className="text-blue-400 hover:text-primary/90">
               Sign in
             </Link>
           </p>

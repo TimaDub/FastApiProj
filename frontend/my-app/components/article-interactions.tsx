@@ -132,7 +132,7 @@ export function ArticleInteractions({
           <Button
             variant="outline"
             size="sm"
-            className="border-gray-600 text-gray-300 hover:bg-gray-700 bg-transparent"
+            className="border-border text-muted-foreground hover:bg-accent hover:text-primary bg-transparent"
             onClick={handleShare}
           >
             <Share2 className="h-4 w-4 mr-1" />
@@ -141,7 +141,7 @@ export function ArticleInteractions({
           <Button
             variant="outline"
             size="sm"
-            className="border-gray-600 text-gray-300 hover:bg-gray-700 bg-transparent"
+            className="border-border text-muted-foreground hover:bg-accent hover:text-primary bg-transparent"
             onClick={handleSave}
           >
             <Bookmark className="h-4 w-4 mr-1" />
@@ -155,11 +155,11 @@ export function ArticleInteractions({
 
   return (
     <>
-      <div className="flex items-center justify-between py-6 border-t border-b border-gray-700 mb-8">
+      <div className="flex items-center justify-between py-6 border-t border-b border-border mb-8">
         <div className="flex items-center gap-6">
           <Button 
             variant="ghost" 
-            className={`text-gray-400 hover:text-white ${userLiked ? 'text-green-400' : ''}`}
+            className={`text-muted-foreground hover:text-primary ${userLiked ? 'text-primary' : ''}`}
             onClick={handleLike}
           >
             <ThumbsUp className="h-5 w-5 mr-2" />
@@ -167,7 +167,7 @@ export function ArticleInteractions({
           </Button>
           <Button 
             variant="ghost" 
-            className={`text-gray-400 hover:text-white ${userDisliked ? 'text-red-400' : ''}`}
+            className={`text-muted-foreground hover:text-primary ${userDisliked ? 'text-destructive' : ''}`}
             onClick={handleDislike}
           >
             <ThumbsDown className="h-5 w-5 mr-2" />
@@ -175,7 +175,7 @@ export function ArticleInteractions({
           </Button>
         </div>
         <Button 
-          className="bg-blue-600 hover:bg-blue-700"
+          className="bg-primary hover:bg-primary/90"
           onClick={handleShare}
         >
           <Share2 className="h-4 w-4 mr-2" />

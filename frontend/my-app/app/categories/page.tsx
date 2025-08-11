@@ -159,7 +159,7 @@ export default function CategoriesPage() {
               {categories.length > 0 ? (
                 categories.map((category) => (
                   <div key={category.slug} onClick={() => handleTabChange(category.slug)}>
-                    <Card className="bg-gray-800 border-gray-700 hover:bg-gray-750 transition-all duration-200 h-full cursor-pointer group">
+                    <Card className="bg-gray-800 border-gray-700 hover:bg-card/90 transition-all duration-200 h-full cursor-pointer group">
                       <CardHeader className="pb-4">
                         <div className="flex items-center justify-between mb-3">
                           <div className="p-3 rounded-lg bg-gray-700">
@@ -171,7 +171,7 @@ export default function CategoriesPage() {
                             {category.article_count} articles
                           </Badge>
                         </div>
-                        <CardTitle className="text-white group-hover:text-blue-400 transition-colors">
+                        <CardTitle className="text-white group-hover:text-primary transition-colors">
                           {category.name}
                         </CardTitle>
                         <CardDescription className="text-gray-400">{category.description}</CardDescription>

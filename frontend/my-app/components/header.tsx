@@ -24,28 +24,28 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="bg-gray-900 border-b border-gray-700 sticky top-0 z-50">
+    <header className="bg-background border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <Shield className="h-8 w-8 text-blue-400" suppressHydrationWarning />
-            <span className="text-2xl font-bold text-white">NewsGuard</span>
-            <Badge className="bg-green-600 text-white text-xs">Verified</Badge>
+            <Shield className="h-8 w-8 text-primary" suppressHydrationWarning />
+            <span className="text-2xl font-bold text-foreground">NewsGuard</span>
+            <Badge className="bg-primary text-primary-foreground text-xs">Verified</Badge>
           </Link>
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center gap-6">
-            <Link href="/" className="text-gray-300 hover:text-white transition-colors">
+            <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
               Home
             </Link>
-            <Link href="/news" className="text-gray-300 hover:text-white transition-colors">
+            <Link href="/news" className="text-muted-foreground hover:text-primary transition-colors">
               Latest News
             </Link>
-            <Link href="/categories" className="text-gray-300 hover:text-white transition-colors">
+            <Link href="/categories" className="text-muted-foreground hover:text-primary transition-colors">
               Categories
             </Link>
-            <Link href="/about" className="text-gray-300 hover:text-white transition-colors">
+            <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
               About
             </Link>
           </nav>
@@ -53,10 +53,10 @@ export function Header() {
           {/* Search */}
           <div className="hidden md:flex items-center gap-4">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" suppressHydrationWarning />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" suppressHydrationWarning />
               <Input
                 placeholder="Search verified news..."
-                className="pl-10 bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
+                className="pl-10 bg-input border-border text-foreground placeholder-muted-foreground focus:border-ring"
               />
             </div>
 
@@ -64,7 +64,7 @@ export function Header() {
             {isAuthenticated && isAdmin && (
               <Link href="/admin">
                 <Button 
-                  className="bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
+                  className="bg-destructive hover:bg-destructive/90 text-destructive-foreground flex items-center gap-2"
                 >
                   <ShieldCheck className="h-4 w-4" />
                   Admin
@@ -76,44 +76,44 @@ export function Header() {
             {isAuthenticated ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="text-gray-300 hover:text-white p-1">
+                  <Button variant="ghost" className="text-muted-foreground hover:text-primary p-1">
                     <Avatar className="h-8 w-8">
                       <AvatarImage src={user?.profile_photo || "/placeholder.svg?height=32&width=32"} />
-                      <AvatarFallback className="bg-blue-600 text-white text-sm">
+                      <AvatarFallback className="bg-primary text-primary-foreground text-sm">
                         {user?.first_name ? user.first_name[0] : user?.username?.[0] || "U"}
                         {user?.last_name ? user.last_name[0] : user?.username?.[1] || ""}
                       </AvatarFallback>
                     </Avatar>
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-gray-800 border-gray-700">
-                  <DropdownMenuLabel className="text-white">{user?.first_name ? `${user.first_name} ${user.last_name}` : user?.username}</DropdownMenuLabel>
-                  <DropdownMenuSeparator className="bg-gray-700" />
-                  <DropdownMenuItem className="text-gray-300 hover:text-white hover:bg-gray-700">
+                <DropdownMenuContent className="bg-card border-border">
+                  <DropdownMenuLabel className="text-card-foreground">{user?.first_name ? `${user.first_name} ${user.last_name}` : user?.username}</DropdownMenuLabel>
+                  <DropdownMenuSeparator className="bg-border" />
+                  <DropdownMenuItem className="text-muted-foreground hover:text-primary hover:bg-accent">
                     <Link href="/profile" className="flex items-center gap-2">
                       <User className="h-4 w-4" />
                       Profile
                     </Link>
                   </DropdownMenuItem>
                   {isAdmin && (
-                    <DropdownMenuItem className="text-gray-300 hover:text-white hover:bg-gray-700">
+                    <DropdownMenuItem className="text-muted-foreground hover:text-primary hover:bg-accent">
                       <Link href="/admin" className="flex items-center gap-2">
                         <ShieldCheck className="h-4 w-4" />
                         Admin Panel
                       </Link>
                     </DropdownMenuItem>
                   )}
-                  <DropdownMenuItem className="text-gray-300 hover:text-white hover:bg-gray-700">
+                  <DropdownMenuItem className="text-muted-foreground hover:text-primary hover:bg-accent">
                     <Bell className="h-4 w-4 mr-2" />
                     Notifications
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="text-gray-300 hover:text-white hover:bg-gray-700">
+                  <DropdownMenuItem className="text-muted-foreground hover:text-primary hover:bg-accent">
                     <Settings className="h-4 w-4 mr-2" />
                     Settings
                   </DropdownMenuItem>
-                  <DropdownMenuSeparator className="bg-gray-700" />
+                  <DropdownMenuSeparator className="bg-border" />
                   <DropdownMenuItem 
-                    className="text-gray-300 hover:text-white hover:bg-gray-700 cursor-pointer"
+                    className="text-muted-foreground hover:text-primary hover:bg-accent cursor-pointer"
                     onClick={() => {
                       logout()
                       router.push('/')
@@ -127,12 +127,12 @@ export function Header() {
             ) : (
               <div className="flex items-center gap-2">
                 <Link href="/signin">
-                  <Button variant="ghost" className="text-gray-300 hover:text-white">
+                  <Button variant="ghost" className="text-muted-foreground hover:text-primary">
                     Sign In
                   </Button>
                 </Link>
                 <Link href="/signup">
-                  <Button className="bg-blue-600 hover:bg-blue-700">Sign Up</Button>
+                  <Button className="bg-primary hover:bg-primary/90">Sign Up</Button>
                 </Link>
               </div>
             )}
@@ -141,7 +141,7 @@ export function Header() {
           {/* Mobile Menu Button */}
           <Button
             variant="ghost"
-            className="md:hidden text-gray-300 hover:text-white"
+            className="md:hidden text-muted-foreground hover:text-primary"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <Menu className="h-6 w-6" suppressHydrationWarning />
@@ -150,34 +150,34 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-700">
+          <div className="md:hidden py-4 border-t border-border">
             <nav className="flex flex-col gap-4">
-              <Link href="/" className="text-gray-300 hover:text-white transition-colors">
+              <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
                 Home
               </Link>
-              <Link href="/news" className="text-gray-300 hover:text-white transition-colors">
+              <Link href="/news" className="text-muted-foreground hover:text-primary transition-colors">
                 Latest News
               </Link>
-              <Link href="/categories" className="text-gray-300 hover:text-white transition-colors">
+              <Link href="/categories" className="text-muted-foreground hover:text-primary transition-colors">
                 Categories
               </Link>
-              <Link href="/about" className="text-gray-300 hover:text-white transition-colors">
+              <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
                 About
               </Link>
-              <div className="pt-4 border-t border-gray-700">
+              <div className="pt-4 border-t border-border">
                 <Input
                   placeholder="Search verified news..."
-                  className="mb-4 bg-gray-800 border-gray-600 text-white placeholder-gray-400"
+                  className="mb-4 bg-input border-border text-foreground placeholder-muted-foreground"
                 />
                 {!isAuthenticated && (
                   <div className="flex gap-2">
                     <Link href="/signin" className="flex-1">
-                      <Button variant="outline" className="w-full border-gray-600 text-gray-300 bg-transparent">
+                      <Button variant="outline" className="w-full border-border text-muted-foreground hover:text-primary bg-transparent">
                         Sign In
                       </Button>
                     </Link>
                     <Link href="/signup" className="flex-1">
-                      <Button className="w-full bg-blue-600 hover:bg-blue-700">Sign Up</Button>
+                      <Button className="w-full bg-primary hover:bg-primary/90">Sign Up</Button>
                     </Link>
                   </div>
                 )}
