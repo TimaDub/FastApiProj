@@ -1,0 +1,21 @@
+[project]
+name = "fastapiproj"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "asyncpg>=0.30.0",
+    "fastapi>=0.116.1",
+    "loguru>=0.7.3",
+    "pydantic-settings>=2.10.1",
+    "python-multipart>=0.0.20",
+    "tortoise>=0.1.1",
+    "tortoise-orm[asyncpg]>=0.25.1",
+    "uvicorn>=0.35.0",
+    "email-validator>=2.0.0",
+    "python-slugify>=8.0.0",
+    "passlib[bcrypt]>=1.7.4",
+    "pyjwt>=2.8.0",
+    "bcrypt>=4.3.0",
+]

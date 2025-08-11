@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: proj-postgres
+    hostname: 7a4b92300e6d
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      
+      LANG: en_US.utf8
+      PG_MAJOR: 17
+      PG_VERSION: 17.5-1.pgdg120+1
+      PGDATA: /var/lib/postgresql/data
+      GOSU_VERSION: 1.17
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: "no"
+    networks:
+      - default
+  
+volumes:
+  pgdata:
