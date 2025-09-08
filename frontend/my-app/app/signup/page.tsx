@@ -97,15 +97,15 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4 py-8">
-      <Card className="w-full max-w-md bg-gray-800 border-gray-700">
+    <div className="min-h-screen bg-background flex items-center justify-center px-4 py-8">
+      <Card className="w-full max-w-md bg-card border-border">
         <CardHeader className="text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Shield className="h-8 w-8 text-blue-400" />
-            <span className="text-2xl font-bold text-white">NewsGuard</span>
+            <Shield className="h-8 w-8 text-primary" />
+            <span className="text-2xl font-bold text-card-foreground">NewsGuard</span>
           </div>
-          <CardTitle className="text-white">Create Account</CardTitle>
-          <CardDescription className="text-gray-400">
+          <CardTitle className="text-card-foreground">Create Account</CardTitle>
+          <CardDescription className="text-muted-foreground">
             Join our community of truth-seekers and get access to verified news
           </CardDescription>
         </CardHeader>
@@ -113,7 +113,7 @@ export default function SignUpPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="firstName" className="text-gray-300">
+                <Label htmlFor="firstName" className="text-muted-foreground">
                   First Name
                 </Label>
                 <Input
@@ -121,12 +121,12 @@ export default function SignUpPage() {
                   placeholder="John"
                   value={formData.firstName}
                   onChange={(e) => handleInputChange("firstName", e.target.value)}
-                  className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
+                  className="bg-input border-border text-foreground placeholder-muted-foreground focus:border-ring"
                   required
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="lastName" className="text-gray-300">
+                <Label htmlFor="lastName" className="text-muted-foreground">
                   Last Name
                 </Label>
                 <Input
@@ -134,14 +134,14 @@ export default function SignUpPage() {
                   placeholder="Doe"
                   value={formData.lastName}
                   onChange={(e) => handleInputChange("lastName", e.target.value)}
-                  className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
+                  className="bg-input border-border text-foreground placeholder-muted-foreground focus:border-ring"
                   required
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-gray-300">
+              <Label htmlFor="email" className="text-muted-foreground">
                 Email
               </Label>
               <Input
@@ -156,7 +156,7 @@ export default function SignUpPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-gray-300">
+              <Label htmlFor="password" className="text-muted-foreground">
                 Password
               </Label>
               <div className="relative">
@@ -166,14 +166,14 @@ export default function SignUpPage() {
                   placeholder="Create a strong password"
                   value={formData.password}
                   onChange={(e) => handleInputChange("password", e.target.value)}
-                  className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500 pr-10"
+                  className="bg-input border-border text-foreground placeholder-muted-foreground focus:border-ring pr-10"
                   required
                 />
                 <Button
                   type="button"
                   variant="ghost"
                   size="sm"
-                  className="absolute right-0 top-0 h-full px-3 text-gray-400 hover:text-primary"
+                  className="absolute right-0 top-0 h-full px-3 text-muted-foreground hover:text-primary"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -182,7 +182,7 @@ export default function SignUpPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword" className="text-gray-300">
+              <Label htmlFor="confirmPassword" className="text-muted-foreground">
                 Confirm Password
               </Label>
               <div className="relative">
@@ -192,14 +192,14 @@ export default function SignUpPage() {
                   placeholder="Confirm your password"
                   value={formData.confirmPassword}
                   onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
-                  className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500 pr-10"
+                  className="bg-input border-border text-foreground placeholder-muted-foreground focus:border-ring pr-10"
                   required
                 />
                 <Button
                   type="button"
                   variant="ghost"
                   size="sm"
-                  className="absolute right-0 top-0 h-full px-3 text-gray-400 hover:text-primary"
+                  className="absolute right-0 top-0 h-full px-3 text-muted-foreground hover:text-primary"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 >
                   {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -213,15 +213,15 @@ export default function SignUpPage() {
                   id="terms"
                   checked={formData.agreeToTerms}
                   onCheckedChange={(checked) => handleInputChange("agreeToTerms", checked as boolean)}
-                  className="border-gray-600 data-[state=checked]:bg-blue-600"
+                  className="border-border data-[state=checked]:bg-primary"
                 />
-                <Label htmlFor="terms" className="text-sm text-gray-300">
+                <Label htmlFor="terms" className="text-sm text-muted-foreground">
                   I agree to the{" "}
-                  <Link href="/terms" className="text-blue-400 hover:text-primary/90">
+                  <Link href="/terms" className="text-primary hover:text-primary/90">
                     Terms of Service
                   </Link>{" "}
                   and{" "}
-                  <Link href="/privacy" className="text-blue-400 hover:text-primary/90">
+                  <Link href="/privacy" className="text-primary hover:text-primary/90">
                     Privacy Policy
                   </Link>
                 </Label>
@@ -232,39 +232,39 @@ export default function SignUpPage() {
                   id="newsletter"
                   checked={formData.subscribeNewsletter}
                   onCheckedChange={(checked) => handleInputChange("subscribeNewsletter", checked as boolean)}
-                  className="border-gray-600 data-[state=checked]:bg-blue-600"
+                  className="border-border data-[state=checked]:bg-primary"
                 />
-                <Label htmlFor="newsletter" className="text-sm text-gray-300">
+                <Label htmlFor="newsletter" className="text-sm text-muted-foreground">
                   Subscribe to our newsletter for verified news updates
                 </Label>
               </div>
             </div>
 
             {error && (
-              <div className="text-red-400 text-sm text-center bg-red-950 border border-red-800 rounded p-2">
+              <div className="text-destructive text-sm text-center bg-destructive/10 border border-destructive/20 rounded p-2">
                 {error}
               </div>
             )}
             
-            <Button type="submit" className="w-full bg-blue-600 hover:bg-primary/90" disabled={!formData.agreeToTerms || loading}>
+            <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={!formData.agreeToTerms || loading}>
               {loading ? "Creating Account..." : "Create Account"}
             </Button>
           </form>
 
-          <Separator className="my-6 bg-gray-600" />
+          <Separator className="my-6 bg-border" />
 
           <div className="space-y-3">
-            <Button variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-accent bg-transparent">
+            <Button variant="outline" className="w-full border-border text-muted-foreground hover:bg-accent bg-transparent">
               Continue with Google
             </Button>
-            <Button variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-accent bg-transparent">
+            <Button variant="outline" className="w-full border-border text-muted-foreground hover:bg-accent bg-transparent">
               Continue with GitHub
             </Button>
           </div>
 
-          <p className="text-center text-sm text-gray-400 mt-6">
+          <p className="text-center text-sm text-muted-foreground mt-6">
             Already have an account?{" "}
-            <Link href="/signin" className="text-blue-400 hover:text-primary/90">
+            <Link href="/signin" className="text-primary hover:text-primary/90">
               Sign in
             </Link>
           </p>

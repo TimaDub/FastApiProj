@@ -17,7 +17,7 @@ router = APIRouter()
 async def get_articles(
     page: int = Query(1, ge=1),
     limit: int = Query(10, ge=1, le=settings.MAX_PAGE_SIZE),
-    category: Optional[str] = None,
+    category: Optional[List[str]] = Query(None),
     search: Optional[str] = None,
     sort: str = Query("created_at", regex="^(created_at|views_count|title|featured)$")
 ):
@@ -26,9 +26,12 @@ async def get_articles(
     # Build query
     query = Article.filter(status="published")
     
-    # Add category filter
+    # Add category filter (OR logic for multiple categories)
     if category:
-        query = query.filter(category__slug=category)
+        category_q = Q()
+        for cat in category:
+            category_q |= Q(category__slug=cat)
+        query = query.filter(category_q)
     
     # Add search filter
     if search:
@@ -207,7 +210,7 @@ async def search_articles(
     q: str = Query(..., min_length=settings.SEARCH_MIN_QUERY_LENGTH),
     page: int = Query(1, ge=1),
     limit: int = Query(10, ge=1, le=settings.MAX_SEARCH_RESULTS),
-    category: Optional[str] = None
+    category: Optional[List[str]] = Query(None)
 ):
     """Search articles"""
     
@@ -221,9 +224,12 @@ async def search_articles(
         Q(author__icontains=q)
     )
     
-    # Add category filter
+    # Add category filter (OR logic for multiple categories)
     if category:
-        query = query.filter(category__slug=category)
+        category_q = Q()
+        for cat in category:
+            category_q |= Q(category__slug=cat)
+        query = query.filter(category_q)
     
     # Get total count
     total = await query.count()

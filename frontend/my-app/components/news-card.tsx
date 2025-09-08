@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Eye, Shield, User } from "lucide-react"
+import { Clock, Eye, Shield, User, Zap } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -12,6 +12,7 @@ interface Article {
   published_at?: string
   views_count: number
   is_featured: boolean
+  is_breaking_news: boolean
   featured_image?: string
   category: {
     id: number
@@ -53,12 +54,20 @@ export function NewsCard({ article, featured = false }: NewsCardProps) {
                 <Badge variant="outline" className="border-border text-muted-foreground text-xs">
                   {article.category.name}
                 </Badge>
-                {article.is_featured && (
-                  <Badge className="bg-primary text-primary-foreground text-xs" suppressHydrationWarning>
-                    <Shield className="h-3 w-3 mr-1" suppressHydrationWarning />
-                    Featured
-                  </Badge>
-                )}
+                <div className="flex items-center gap-1">
+                  {article.is_breaking_news && (
+                    <Badge className="bg-destructive text-black text-xs" suppressHydrationWarning>
+                      <Zap className="h-3 w-3 mr-1" suppressHydrationWarning />
+                      Breaking
+                    </Badge>
+                  )}
+                  {article.is_featured && (
+                    <Badge className="bg-primary text-primary-foreground text-xs" suppressHydrationWarning>
+                      <Shield className="h-3 w-3 mr-1" suppressHydrationWarning />
+                      Featured
+                    </Badge>
+                  )}
+                </div>
               </div>
               <h3 className="text-lg lg:text-xl font-bold text-foreground hover:text-primary transition-colors leading-tight">
                 <Link href={`/news/${article.id}`}>{article.title}</Link>
@@ -93,12 +102,20 @@ export function NewsCard({ article, featured = false }: NewsCardProps) {
               <Badge variant="outline" className="border-border text-muted-foreground">
                 {article.category.name}
               </Badge>
-              {article.is_featured && (
-                <Badge className="bg-primary text-primary-foreground" suppressHydrationWarning>
-                  <Shield className="h-3 w-3 mr-1" suppressHydrationWarning />
-                  Featured
-                </Badge>
-              )}
+              <div className="flex items-center gap-1">
+                {article.is_breaking_news && (
+                  <Badge className="bg-destructive text-black" suppressHydrationWarning>
+                    <Zap className="h-3 w-3 mr-1" suppressHydrationWarning />
+                    Breaking
+                  </Badge>
+                )}
+                {article.is_featured && (
+                  <Badge className="bg-primary text-primary-foreground" suppressHydrationWarning>
+                    <Shield className="h-3 w-3 mr-1" suppressHydrationWarning />
+                    Featured
+                  </Badge>
+                )}
+              </div>
             </div>
             <CardTitle className="text-card-foreground hover:text-primary transition-colors">
               <Link href={`/news/${article.id}`}>{article.title}</Link>

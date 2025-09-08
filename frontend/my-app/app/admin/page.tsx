@@ -123,14 +123,14 @@ export default function AdminPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-900 py-8">
+      <div className="min-h-screen bg-background py-8">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="animate-pulse">
-            <div className="h-8 bg-gray-700 rounded w-64 mb-4"></div>
-            <div className="h-4 bg-gray-700 rounded w-96 mb-8"></div>
+            <div className="h-8 bg-muted rounded w-64 mb-4"></div>
+            <div className="h-4 bg-muted rounded w-96 mb-8"></div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {Array.from({ length: 4 }).map((_, i) => (
-                <div key={i} className="h-32 bg-gray-800 rounded"></div>
+                <div key={i} className="h-32 bg-card rounded"></div>
               ))}
             </div>
           </div>
@@ -140,35 +140,35 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 py-8">
+    <div className="min-h-screen bg-background py-8">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <Shield className="h-8 w-8 text-blue-400" suppressHydrationWarning />
-            <h1 className="text-3xl font-bold text-white">Admin Dashboard</h1>
+            <Shield className="h-8 w-8 text-primary" suppressHydrationWarning />
+            <h1 className="text-3xl font-bold text-foreground">Admin Dashboard</h1>
           </div>
-          <p className="text-gray-400">Manage content, users, and platform settings</p>
+          <p className="text-muted-foreground">Manage content, users, and platform settings</p>
         </div>
 
         {/* Stats Overview */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="bg-card border-border">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-400 text-sm">Total Articles</p>
-                  <p className="text-2xl font-bold text-white">{stats.total_articles}</p>
+                  <p className="text-muted-foreground text-sm">Total Articles</p>
+                  <p className="text-2xl font-bold text-foreground">{stats.total_articles}</p>
                 </div>
-                <FileText className="h-8 w-8 text-blue-400" suppressHydrationWarning />
+                <FileText className="h-8 w-8 text-primary" suppressHydrationWarning />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="bg-card border-border">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-400 text-sm">Draft Articles</p>
+                  <p className="text-muted-foreground text-sm">Draft Articles</p>
                   <p className="text-2xl font-bold text-yellow-400">{stats.draft_articles}</p>
                 </div>
                 <Clock className="h-8 w-8 text-yellow-400" suppressHydrationWarning />
@@ -176,23 +176,23 @@ export default function AdminPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="bg-card border-border">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-400 text-sm">Newsletter Subscribers</p>
-                  <p className="text-2xl font-bold text-green-400">{stats.newsletter_subscribers}</p>
+                  <p className="text-muted-foreground text-sm">Newsletter Subscribers</p>
+                  <p className="text-2xl font-bold text-primary">{stats.newsletter_subscribers}</p>
                 </div>
-                <Users className="h-8 w-8 text-green-400" suppressHydrationWarning />
+                <Users className="h-8 w-8 text-primary" suppressHydrationWarning />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="bg-card border-border">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-400 text-sm">Flagged Content</p>
+                  <p className="text-muted-foreground text-sm">Flagged Content</p>
                   <p className="text-2xl font-bold text-red-400">{stats.flagged_articles}</p>
                 </div>
                 <AlertTriangle className="h-8 w-8 text-red-400" suppressHydrationWarning />
@@ -202,40 +202,40 @@ export default function AdminPage() {
         </div>
 
         <Tabs defaultValue="articles" className="space-y-6">
-          <TabsList className="bg-gray-800 border-gray-700">
-            <TabsTrigger value="articles" className="data-[state=active]:bg-gray-700">
+          <TabsList className="bg-card border-border">
+            <TabsTrigger value="articles" className="data-[state=active]:bg-muted">
               <FileText className="h-4 w-4 mr-2" suppressHydrationWarning />
               Articles
             </TabsTrigger>
-            <TabsTrigger value="create" className="data-[state=active]:bg-gray-700">
+            <TabsTrigger value="create" className="data-[state=active]:bg-muted">
               <Plus className="h-4 w-4 mr-2" suppressHydrationWarning />
               Create Article
             </TabsTrigger>
-            <TabsTrigger value="users" className="data-[state=active]:bg-gray-700">
+            <TabsTrigger value="users" className="data-[state=active]:bg-muted">
               <Users className="h-4 w-4 mr-2" suppressHydrationWarning />
               Users
             </TabsTrigger>
-            <TabsTrigger value="moderation" className="data-[state=active]:bg-gray-700">
+            <TabsTrigger value="moderation" className="data-[state=active]:bg-muted">
               <Shield className="h-4 w-4 mr-2" suppressHydrationWarning />
               Moderation
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="articles">
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="bg-card border-border">
               <CardHeader>
-                <CardTitle className="text-white">Article Management</CardTitle>
-                <CardDescription className="text-gray-400">Manage published and pending articles</CardDescription>
+                <CardTitle className="text-foreground">Article Management</CardTitle>
+                <CardDescription className="text-muted-foreground">Manage published and pending articles</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   {articles.length > 0 ? (
                     articles.map((article) => (
-                      <div key={article.id} className="border border-gray-700 rounded-lg p-4">
+                      <div key={article.id} className="border border-border rounded-lg p-4">
                         <div className="flex items-center justify-between mb-3">
                           <div className="flex-1">
-                            <h4 className="text-white font-medium mb-1">{article.title}</h4>
-                            <div className="flex items-center gap-4 text-sm text-gray-400">
+                            <h4 className="text-foreground font-medium mb-1">{article.title}</h4>
+                            <div className="flex items-center gap-4 text-sm text-muted-foreground">
                               <span>By {article.author}</span>
                               <Badge variant="outline" className="border-gray-600 text-gray-300">
                                 {typeof article.category === 'object' ? article.category.name : article.category}
@@ -247,7 +247,7 @@ export default function AdminPage() {
                                 {article.status}
                               </Badge>
                               {/* Verified badge - will be updated when backend adds this field */ false && (
-                                <Badge className="bg-blue-600">
+                                <Badge className="bg-primary">
                                   <Shield className="h-3 w-3 mr-1" suppressHydrationWarning />
                                   Verified
                                 </Badge>
@@ -256,18 +256,18 @@ export default function AdminPage() {
                           </div>
                           <div className="flex items-center gap-2">
                             {article.status === "published" && (
-                              <div className="flex items-center gap-1 text-sm text-gray-400 mr-4">
+                              <div className="flex items-center gap-1 text-sm text-muted-foreground mr-4">
                                 <Eye className="h-4 w-4" suppressHydrationWarning />
                                 {article.views_count?.toLocaleString()}
                               </div>
                             )}
-                            <Button variant="ghost" size="sm" className="text-gray-400 hover:text-primary">
+                            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
                               <Edit className="h-4 w-4" suppressHydrationWarning />
                             </Button>
                             <Button 
                               variant="ghost" 
                               size="sm" 
-                              className="text-gray-400 hover:text-destructive"
+                              className="text-muted-foreground hover:text-destructive"
                               onClick={() => handleDeleteArticle(article.id, article.title)}
                             >
                               <Trash2 className="h-4 w-4" suppressHydrationWarning />
@@ -277,7 +277,7 @@ export default function AdminPage() {
                       </div>
                     ))
                   ) : (
-                    <div className="text-center py-8 text-gray-400">
+                    <div className="text-center py-8 text-muted-foreground">
                       <p>No articles found.</p>
                     </div>
                   )}
@@ -287,10 +287,10 @@ export default function AdminPage() {
           </TabsContent>
 
           <TabsContent value="create">
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="bg-card border-border">
               <CardHeader>
-                <CardTitle className="text-white">Create New Article</CardTitle>
-                <CardDescription className="text-gray-400">
+                <CardTitle className="text-foreground">Create New Article</CardTitle>
+                <CardDescription className="text-muted-foreground">
                   Publish verified news content to the platform
                 </CardDescription>
               </CardHeader>
@@ -305,7 +305,7 @@ export default function AdminPage() {
                       value={newArticle.title}
                       onChange={(e) => setNewArticle((prev) => ({ ...prev, title: e.target.value }))}
                       placeholder="Enter article title"
-                      className="bg-gray-700 border-gray-600 text-white"
+                      className="bg-muted border-gray-600 text-foreground"
                       required
                     />
                   </div>
@@ -319,7 +319,7 @@ export default function AdminPage() {
                       value={newArticle.summary}
                       onChange={(e) => setNewArticle((prev) => ({ ...prev, summary: e.target.value }))}
                       placeholder="Brief description of the article"
-                      className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                      className="w-full px-3 py-2 bg-muted border border-gray-600 rounded-md text-foreground placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                       rows={3}
                     />
                   </div>
@@ -333,10 +333,10 @@ export default function AdminPage() {
                         value={newArticle.category_id === 0 ? "" : newArticle.category_id.toString()}
                         onValueChange={(value) => setNewArticle((prev) => ({ ...prev, category_id: parseInt(value) }))}
                       >
-                        <SelectTrigger className="bg-gray-700 border-gray-600 text-white">
+                        <SelectTrigger className="bg-muted border-gray-600 text-foreground">
                           <SelectValue placeholder="Select category" />
                         </SelectTrigger>
-                        <SelectContent className="bg-gray-700 border-gray-600">
+                        <SelectContent className="bg-muted border-gray-600">
                           {categories.map((category) => (
                             <SelectItem key={category.id} value={category.id.toString()}>
                               {category.name}
@@ -355,7 +355,7 @@ export default function AdminPage() {
                         value={newArticle.author}
                         onChange={(e) => setNewArticle((prev) => ({ ...prev, author: e.target.value }))}
                         placeholder="Author name"
-                        className="bg-gray-700 border-gray-600 text-white"
+                        className="bg-muted border-gray-600 text-foreground"
                         required
                       />
                     </div>
@@ -371,7 +371,7 @@ export default function AdminPage() {
                         value={newArticle.slug}
                         onChange={(e) => setNewArticle((prev) => ({ ...prev, slug: e.target.value }))}
                         placeholder="article-url-slug"
-                        className="bg-gray-700 border-gray-600 text-white"
+                        className="bg-muted border-gray-600 text-foreground"
                       />
                     </div>
 
@@ -384,7 +384,7 @@ export default function AdminPage() {
                         value={newArticle.featured_image}
                         onChange={(e) => setNewArticle((prev) => ({ ...prev, featured_image: e.target.value }))}
                         placeholder="https://example.com/image.jpg"
-                        className="bg-gray-700 border-gray-600 text-white"
+                        className="bg-muted border-gray-600 text-foreground"
                       />
                     </div>
                   </div>
@@ -398,7 +398,7 @@ export default function AdminPage() {
                       value={newArticle.meta_description}
                       onChange={(e) => setNewArticle((prev) => ({ ...prev, meta_description: e.target.value }))}
                       placeholder="SEO meta description (max 160 characters)"
-                      className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                      className="w-full px-3 py-2 bg-muted border border-gray-600 rounded-md text-foreground placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                       rows={2}
                       maxLength={160}
                     />
@@ -413,7 +413,7 @@ export default function AdminPage() {
                       value={newArticle.content}
                       onChange={(e) => setNewArticle((prev) => ({ ...prev, content: e.target.value }))}
                       placeholder="Write your article content here..."
-                      className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                      className="w-full px-3 py-2 bg-muted border border-gray-600 rounded-md text-foreground placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                       rows={10}
                       required
                     />
@@ -451,10 +451,10 @@ export default function AdminPage() {
                           value={newArticle.status}
                           onValueChange={(value) => setNewArticle((prev) => ({ ...prev, status: value }))}
                         >
-                          <SelectTrigger className="bg-gray-700 border-gray-600 text-white w-40">
+                          <SelectTrigger className="bg-muted border-gray-600 text-foreground w-40">
                             <SelectValue />
                           </SelectTrigger>
-                          <SelectContent className="bg-gray-700 border-gray-600">
+                          <SelectContent className="bg-muted border-gray-600">
                             <SelectItem value="draft">Draft</SelectItem>
                             <SelectItem value="published">Published</SelectItem>
                             <SelectItem value="archived">Archived</SelectItem>
@@ -471,7 +471,7 @@ export default function AdminPage() {
                       >
                         Save Draft
                       </Button>
-                      <Button type="submit" className="bg-blue-600 hover:bg-primary/90">
+                      <Button type="submit" className="bg-primary hover:bg-primary/90">
                         Publish Article
                       </Button>
                     </div>
@@ -482,13 +482,13 @@ export default function AdminPage() {
           </TabsContent>
 
           <TabsContent value="users">
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="bg-card border-border">
               <CardHeader>
-                <CardTitle className="text-white">User Management</CardTitle>
-                <CardDescription className="text-gray-400">Manage user accounts and permissions</CardDescription>
+                <CardTitle className="text-foreground">User Management</CardTitle>
+                <CardDescription className="text-muted-foreground">Manage user accounts and permissions</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="text-center py-8 text-gray-400">
+                <div className="text-center py-8 text-muted-foreground">
                   <Users className="h-12 w-12 mx-auto mb-4 opacity-50" suppressHydrationWarning />
                   <p>User management interface coming soon</p>
                 </div>
@@ -497,10 +497,10 @@ export default function AdminPage() {
           </TabsContent>
 
           <TabsContent value="moderation">
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="bg-card border-border">
               <CardHeader>
-                <CardTitle className="text-white">Content Moderation</CardTitle>
-                <CardDescription className="text-gray-400">
+                <CardTitle className="text-foreground">Content Moderation</CardTitle>
+                <CardDescription className="text-muted-foreground">
                   Review flagged content and manage fake news detection
                 </CardDescription>
               </CardHeader>
@@ -512,8 +512,8 @@ export default function AdminPage() {
                         <div className="flex items-center gap-3">
                           <AlertTriangle className="h-5 w-5 text-yellow-400" suppressHydrationWarning />
                           <div>
-                            <h4 className="text-white font-medium">Suspicious Content Detected</h4>
-                            <p className="text-sm text-gray-400">AI flagged potential misinformation</p>
+                            <h4 className="text-foreground font-medium">Suspicious Content Detected</h4>
+                            <p className="text-sm text-muted-foreground">AI flagged potential misinformation</p>
                           </div>
                         </div>
                         <Badge className="bg-yellow-600">Pending Review</Badge>
@@ -534,7 +534,7 @@ export default function AdminPage() {
                       </div>
                     </div>
                   ) : (
-                    <div className="text-center py-8 text-gray-400">
+                    <div className="text-center py-8 text-muted-foreground">
                       <Shield className="h-12 w-12 mx-auto mb-4 opacity-50" suppressHydrationWarning />
                       <p>No flagged content at this time</p>
                     </div>

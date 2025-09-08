@@ -3,14 +3,14 @@ import Link from "next/link"
 
 export function Footer() {
   return (
-    <footer className="bg-background border-t border-border mt-16">
+    <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Shield className="h-6 w-6 text-primary" suppressHydrationWarning />
-              <span className="text-xl font-bold">NewsGuard</span>
+              <span className="text-xl font-bold text-card-foreground">NewsGuard</span>
             </div>
             <p className="text-muted-foreground text-sm">
               Fighting misinformation with verified, fact-checked journalism. Your trusted source for truth.
@@ -25,7 +25,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold mb-4">Quick Links</h3>
+            <h3 className="font-semibold mb-4 text-card-foreground">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/" className="text-muted-foreground hover:text-primary">
@@ -52,7 +52,7 @@ export function Footer() {
 
           {/* Categories */}
           <div>
-            <h3 className="font-semibold mb-4">Categories</h3>
+            <h3 className="font-semibold mb-4 text-card-foreground">Categories</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/category/politics" className="text-muted-foreground hover:text-primary">
@@ -79,7 +79,7 @@ export function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="font-semibold mb-4">Legal</h3>
+            <h3 className="font-semibold mb-4 text-card-foreground">Legal</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/privacy" className="text-muted-foreground hover:text-primary">

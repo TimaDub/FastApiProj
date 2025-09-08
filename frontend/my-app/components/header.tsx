@@ -25,22 +25,22 @@ export function Header() {
 
   return (
     <header className="bg-background border-b border-border sticky top-0 z-50">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-1 md:px-1 lg:px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Shield className="h-8 w-8 text-primary" suppressHydrationWarning />
             <span className="text-2xl font-bold text-foreground">NewsGuard</span>
-            <Badge className="bg-primary text-primary-foreground text-xs">Verified</Badge>
+            <Badge className="bg-primary text-primary-foreground text-xs lg:block hidden">Verified</Badge>
           </Link>
 
           {/* Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-2 lg:gap-6">
             <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
               Home
             </Link>
             <Link href="/news" className="text-muted-foreground hover:text-primary transition-colors">
-              Latest News
+              Latest
             </Link>
             <Link href="/categories" className="text-muted-foreground hover:text-primary transition-colors">
               Categories
@@ -51,12 +51,12 @@ export function Header() {
           </nav>
 
           {/* Search */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-2 lg:gap-4">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" suppressHydrationWarning />
               <Input
                 placeholder="Search verified news..."
-                className="pl-10 bg-input border-border text-foreground placeholder-muted-foreground focus:border-ring"
+                className="pl-10 bg-input border-border text-foreground placeholder-muted-foreground focus:border-ring w-32 lg:w-auto"
               />
             </div>
 
@@ -126,14 +126,26 @@ export function Header() {
               </DropdownMenu>
             ) : (
               <div className="flex items-center gap-2">
-                <Link href="/signin">
-                  <Button variant="ghost" className="text-muted-foreground hover:text-primary">
-                    Sign In
-                  </Button>
-                </Link>
-                <Link href="/signup">
-                  <Button className="bg-primary hover:bg-primary/90">Sign Up</Button>
-                </Link>
+                {/* Single Auth button for tablet range (768px-1023px) */}
+                <div className="hidden md:block lg:hidden">
+                  <Link href="/signin">
+                    <Button className="bg-primary hover:bg-primary/90 text-xs px-2">
+                      Auth
+                    </Button>
+                  </Link>
+                </div>
+                
+                {/* Two separate buttons for large screens (1024px+) */}
+                <div className="hidden lg:flex gap-2">
+                  <Link href="/signin">
+                    <Button variant="ghost" className="text-muted-foreground hover:text-primary">
+                      Sign In
+                    </Button>
+                  </Link>
+                  <Link href="/signup">
+                    <Button className="bg-primary hover:bg-primary/90">Sign Up</Button>
+                  </Link>
+                </div>
               </div>
             )}
           </div>
@@ -151,17 +163,17 @@ export function Header() {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border">
-            <nav className="flex flex-col gap-4">
-              <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
+            <nav className="flex flex-col gap-4 items-center">
+              <Link href="/" className="text-muted-foreground hover:text-primary transition-colors text-center">
                 Home
               </Link>
-              <Link href="/news" className="text-muted-foreground hover:text-primary transition-colors">
-                Latest News
+              <Link href="/news" className="text-muted-foreground hover:text-primary transition-colors text-center">
+                Latest
               </Link>
-              <Link href="/categories" className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href="/categories" className="text-muted-foreground hover:text-primary transition-colors text-center">
                 Categories
               </Link>
-              <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors text-center">
                 About
               </Link>
               <div className="pt-4 border-t border-border">
@@ -170,7 +182,7 @@ export function Header() {
                   className="mb-4 bg-input border-border text-foreground placeholder-muted-foreground"
                 />
                 {!isAuthenticated && (
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 justify-center">
                     <Link href="/signin" className="flex-1">
                       <Button variant="outline" className="w-full border-border text-muted-foreground hover:text-primary bg-transparent">
                         Sign In

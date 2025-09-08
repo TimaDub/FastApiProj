@@ -36,13 +36,20 @@ class ApiClient {
     page?: number
     limit?: number
     category?: string
+    categories?: string[]
     search?: string
     sort?: string
   }): Promise<ArticlesResponse> {
     const searchParams = new URLSearchParams()
     if (params?.page) searchParams.append("page", params.page.toString())
     if (params?.limit) searchParams.append("limit", params.limit.toString())
+    
+    // Support both single category and multiple categories
     if (params?.category) searchParams.append("category", params.category)
+    if (params?.categories && params.categories.length > 0) {
+      params.categories.forEach(cat => searchParams.append("category", cat))
+    }
+    
     if (params?.search) searchParams.append("search", params.search)
     if (params?.sort) searchParams.append("sort", params.sort)
 
@@ -115,12 +122,18 @@ class ApiClient {
       page?: number
       limit?: number
       category?: string
+      categories?: string[]
     },
   ): Promise<ArticlesResponse> {
     const searchParams = new URLSearchParams({ q: query })
     if (params?.page) searchParams.append("page", params.page.toString())
     if (params?.limit) searchParams.append("limit", params.limit.toString())
+    
+    // Support both single category and multiple categories
     if (params?.category) searchParams.append("category", params.category)
+    if (params?.categories && params.categories.length > 0) {
+      params.categories.forEach(cat => searchParams.append("category", cat))
+    }
 
     return this.request<ArticlesResponse>(`/search?${searchParams.toString()}`)
   }

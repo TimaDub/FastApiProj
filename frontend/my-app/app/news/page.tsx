@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Search, Filter } from "lucide-react"
 import { NewsCard } from "@/components/news-card"
-import { CategoryNav } from "@/components/category-nav"
 import { apiClient } from "@/lib/api"
 import { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
@@ -16,13 +15,13 @@ export default function NewsPage() {
   const [loading, setLoading] = useState(true)
   const [sortBy, setSortBy] = useState("created_at")
 
-  const fetchArticles = async (categorySlug?: string | null) => {
+  const fetchArticles = async (categorySlugs?: string[]) => {
     setLoading(true)
     try {
       const response = await apiClient.getArticles({ 
         limit: 12, 
         sort: sortBy,
-        ...(categorySlug && { category: categorySlug })
+        ...(categorySlugs && categorySlugs.length > 0 && { categories: categorySlugs })
       })
       setArticles(response.items || [])
     } catch (error) {
@@ -33,13 +32,9 @@ export default function NewsPage() {
   }
 
   useEffect(() => {
-    const categorySlug = searchParams.get('category')
-    fetchArticles(categorySlug)
+    const categorySlugs = searchParams.getAll('category')
+    fetchArticles(categorySlugs)
   }, [searchParams, sortBy])
-
-  const handleCategoryChange = (categorySlug: string | null) => {
-    fetchArticles(categorySlug)
-  }
 
   const handleSortChange = (newSort: string) => {
     setSortBy(newSort)
@@ -82,9 +77,6 @@ export default function NewsPage() {
           </div>
         </div>
       </div>
-
-      {/* Category Navigation */}
-      <CategoryNav onCategoryChange={handleCategoryChange} />
 
       {/* News Grid */}
       <div className="container mx-auto px-4 py-8">
