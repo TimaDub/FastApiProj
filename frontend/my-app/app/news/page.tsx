@@ -69,9 +69,11 @@ export default function NewsPage() {
                   <SelectItem value="title">Title A-Z</SelectItem>
                 </SelectContent>
               </Select>
-              <Button variant="outline" className="border-border text-muted-foreground hover:bg-accent bg-transparent">
-                <Filter className="h-4 w-4 mr-2" suppressHydrationWarning />
-                Filters
+              <Button
+               variant="outline"
+               className="border-border text-muted-foreground bg-transparent hover:bg-blue-500 hover:text-white transition-colors duration-200">
+              <Filter className="h-4 w-4 mr-2" suppressHydrationWarning />
+              Filters
               </Button>
             </div>
           </div>

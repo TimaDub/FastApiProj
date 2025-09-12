@@ -1,7 +1,6 @@
 from tortoise.models import Model
 from tortoise import fields
 from passlib.context import CryptContext
-from datetime import datetime
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 

@@ -82,8 +82,13 @@ export default function HomePage() {
             ) : featuredNews.length > 0 ? (
               featuredNews.map((article) => <NewsCard key={article.id} article={article} featured />)
             ) : (
-              <div className="text-center py-8 text-muted-foreground">
-                <p>No articles available for this category.</p>
+              <div>
+                <div className="text-center py-8 text-muted-foreground">
+                  <p>No articles available for this category.</p>
+                </div>
+                <div className="h-max items-center">
+                  <img className="mx-auto" src="/no-results.png" alt="No Articles" width="200" height="200"></img>
+                </div>
               </div>
             )}
           </div>
